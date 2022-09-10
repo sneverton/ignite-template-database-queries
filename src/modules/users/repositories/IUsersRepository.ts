@@ -1,5 +1,5 @@
-import { IFindUserWithGamesDTO, IFindUserByFullNameDTO } from '../dtos';
-import { User } from '../entities/User';
+import type { IFindUserWithGamesDTO, IFindUserByFullNameDTO } from "../dtos";
+import type { User } from "../entities/User";
 
 export interface IUsersRepository {
   findUserWithGamesById(data: IFindUserWithGamesDTO): Promise<User>;

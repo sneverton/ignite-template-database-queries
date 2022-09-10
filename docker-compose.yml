@@ -1,0 +1,29 @@
+services:
+  database:
+    image: postgres
+    container_name: ignitedatabase
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=docker
+    - POSTGRES_DB=queries_challenge
+    volumes:
+      - pgdata:/data/postgres
+
+  app:
+    build: .
+    container_name: igniteapp
+    ports:
+      - 8081:8081
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local
